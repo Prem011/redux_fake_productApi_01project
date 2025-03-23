@@ -78,3 +78,10 @@ export const fetchProductAction = () => {
 }
 
 then disptach the data from the components
+
+
+####CONVERTING INTO SLICES 
+for
+	✔ Less Boilerplate → No need to define action types, action creators, and reducers separately.
+	✔ Better Performance → Uses Immer.js for immutable state updates.
+	✔ Built-in Async Handling → Works seamlessly with createAsyncThunk.
