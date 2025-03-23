@@ -13,6 +13,8 @@ export const productReducer = (state = intialState , {type, payload}) => {
     switch (type) {
         case productActionTypes.SET_PRODUCTS:
             return {...state, products : payload};
+        case productActionTypes.FETCH_PRODUCTS:
+            return {...state, products : payload};
         default:
             return state;
     }

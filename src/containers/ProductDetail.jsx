@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { setSelectedProduct, removeSetSelectedProduct } from "../redux/actions/productActions";
+import { setSelectedProduct, removeSetSelectedProduct, fetchSelectedProduct } from "../redux/actions/productActions";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -11,21 +11,22 @@ const ProductDetail = () => {
   console.log("product : ", product);
 
   const fetchAProduct = async () => {
-    const response = await axios
-      .get(`https://fakestoreapi.com/products/${productId}`)
-      .catch((err) => {
-        console.error(
-          "err.message in fetching a single product : ",
-          err.message
-        );
-      });
+
+  //   const response = await axios
+  //     .get(`https://fakestoreapi.com/products/${productId}`)
+  //     .catch((err) => {
+  //       console.error(
+  //         "err.message in fetching a single product : ",
+  //         err.message
+  //       );
+  //     });
 
     console.log("response : ", response);
     dispatch(setSelectedProduct(response.data));
   };
 
   useEffect(() => {
-    if (productId && productId !== "") fetchAProduct();
+    if (productId && productId !== "") dispatch(fetchSelectedProduct(productId));
 
     //remove the selected product from the state
     return  () => {
